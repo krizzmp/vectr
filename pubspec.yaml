@@ -1,0 +1,4 @@
+name: angularDart
+dependencies:
+  browser: any
+  angular: any

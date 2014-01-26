@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+	<title>Chapter Two - A Simple Recipe Book</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div app>
+	<div class="toolbar">
+		<i class="new" ng-click="ctrl.newShape()"></i>
+		<i class="new"></i>
+		<i class="new"></i>
+	</div>
+	<div class="content">
+		<div class="canvas">
+
+			<svg height="300">
+					<rect ng-repeat="shape in ctrl.shapes" ng-click="ctrl.selectShape(shape)"
+					      width="{{shape.width}}" height="{{shape.height}}"
+					      x="{{shape.x}}" y="{{shape.y}}"
+					      rx="{{shape.rounding}}"
+					      transform="rotate({{shape.rotation}} {{shape.x + shape.width/2}} {{shape.y + shape.height/2}})"
+					      style="fill: {{shape.color}}; stroke: {{shape.strokeColor}}; stroke-width: {{shape.strokeWidth}}"></rect>
+			</svg>
+		</div>
+		<div class="sidebar">
+			<div class="om">
+				<div class="header">
+					Object manager
+				</div>
+				<ul>
+					<li ng-repeat="shape in ctrl.shapes" ng-class="{selected: shape==ctrl.selectedShape}"
+					    ng-click="ctrl.selectShape(shape)" contenteditable="{{shape==ctrl.selectedShape}}"> {{shape.name}}</li>
+				</ul>
+			</div>
+			<div class="am">
+				<div class="header">
+					Attribute manager
+				</div>
+				<div class="tabSelector">
+					<span ng-class="{active:ctrl.amTabSel=='shape' }" ng-click="ctrl.amTabSel='shape'">Shape </span>
+					<span ng-class="{active:ctrl.amTabSel=='style' }" ng-click="ctrl.amTabSel='style'">Style </span>
+				</div>
+				<div ng-class="{active:ctrl.amTabSel=='shape' }" class="shape">
+					<label>
+						<span>X</span>
+						<input type="number" min="0" max="50" ng-model="ctrl.selectedShape.x" />
+						<range vaule="ctrl.selectedShape.x"></range>
+					</label>
+					<br />
+					<label>
+						<span>Y</span>
+						<input type="number" min="0" max="50" ng-model="ctrl.selectedShape.y" />
+						<range vaule="ctrl.selectedShape.y"></range>
+					</label>
+					<br/>
+					<label>
+						<span>Rotation</span>
+						<input type="number" min="0" max="360" ng-model="ctrl.selectedShape.rotation" />
+						<range vaule="ctrl.selectedShape.rotation"></range>
+					</label>
+					<hr>
+					<label>
+						<span>Width</span>
+						<input type="number" min="0" max="50" ng-model="ctrl.selectedShape.width" />
+						<range vaule="ctrl.selectedShape.width"></range>
+					</label>
+					<br />
+					<label>
+						<span>Height</span>
+						<input type="number" min="0" max="50" ng-model="ctrl.selectedShape.height" />
+						<range vaule="ctrl.selectedShape.height"></range>
+					</label>
+					<hr/>
+					<label>
+						<span>Rounding</span>
+						<input type="number" min="0" max="50" ng-model="ctrl.selectedShape.rounding" />
+						<range vaule="ctrl.selectedShape.rounding"></range>
+					</label>
+				</div>
+				<div ng-class="{active:ctrl.amTabSel=='style' }" class="style">
+					<label>
+						<span>X</span>
+						<input type="number" min="0" max="50" ng-model="ctrl.selectedShape.x" />
+						<range vaule="ctrl.selectedShape.x"></range>
+					</label>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="application/dart" src="main.dart"></script>
+<script type="text/javascript" src="packages/browser/dart.js"></script>
+</body>
+</html>
