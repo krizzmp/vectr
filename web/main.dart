@@ -1,5 +1,6 @@
 import 'package:angular/angular.dart';
 import 'components/super_range.dart';
+import 'dart:html';
 //import 'package:perf_api/perf_api.dart';
 
 /* Use the NgController annotation to indicate that this class is an
@@ -22,9 +23,11 @@ import 'components/super_range.dart';
 class AppController {
 
   List<Shape> shapes;
+  var colorPicker;
   AppController() {
     shapes = _loadData();
     selectedShape = shapes[0];
+
   }
 
   Shape selectedShape;
@@ -59,10 +62,51 @@ class MyAppModule extends Module {
   MyAppModule() {
     type(AppController);
     type(RatingComponent);
+    type(InputDateDirective);
+    type(InputRangeDirective);
     //type(Profiler, implementedBy: Profiler); // comment out to enable profiling
   }
 }
 
 main() {
   ngBootstrap(module: new MyAppModule());
+}
+
+@NgDirective(selector: 'input[type=color][ng-model]')
+class InputDateDirective {
+  InputElement inputElement;
+  NgModel ngModel;
+  Scope scope;
+
+  InputDateDirective(Element this.inputElement, this.ngModel, this.scope) {
+    ngModel.render = (String value) {
+      if(value!=null){
+        inputElement.value  = value;//new DateFormat('y-M-d').format(value);
+      }
+    };
+    inputElement.onChange.listen((Event value) {
+      scope.$apply(() {
+        ngModel.viewValue = inputElement.value == '' ? null :  inputElement.value;
+      });
+    });
+  }
+}
+@NgDirective(selector: 'input[type=range][ng-model]')
+class InputRangeDirective {
+  InputElement inputElement;
+  NgModel ngModel;
+  Scope scope;
+
+  InputRangeDirective(Element this.inputElement, this.ngModel, this.scope) {
+    ngModel.render = (int value) {
+      if(value!=null){
+        inputElement.valueAsNumber  = value;//new DateFormat('y-M-d').format(value);
+      }
+    };
+    inputElement.onChange.listen((Event value) {
+      scope.$apply(() {
+        ngModel.viewValue = inputElement.value == '' ? null :  inputElement.valueAsNumber;
+      });
+    });
+  }
 }

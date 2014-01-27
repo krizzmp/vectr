@@ -46,45 +46,57 @@
 					<label>
 						<span>X</span>
 						<input type="number" min="0" max="50" ng-model="ctrl.selectedShape.x" />
-						<range vaule="ctrl.selectedShape.x"></range>
+						<input type="range" min="0" max="50" ng-model="ctrl.selectedShape.x" />
 					</label>
 					<br />
 					<label>
 						<span>Y</span>
 						<input type="number" min="0" max="50" ng-model="ctrl.selectedShape.y" />
-						<range vaule="ctrl.selectedShape.y"></range>
+						<input type="range" min="0" max="50" ng-model="ctrl.selectedShape.y" />
 					</label>
 					<br/>
 					<label>
 						<span>Rotation</span>
 						<input type="number" min="0" max="360" ng-model="ctrl.selectedShape.rotation" />
-						<range vaule="ctrl.selectedShape.rotation"></range>
+						<input type="range" min="0" max="360" ng-model="ctrl.selectedShape.rotation" />
 					</label>
 					<hr>
 					<label>
 						<span>Width</span>
 						<input type="number" min="0" max="50" ng-model="ctrl.selectedShape.width" />
-						<range vaule="ctrl.selectedShape.width"></range>
+						<input type="range" min="0" max="50" ng-model="ctrl.selectedShape.width" />
 					</label>
 					<br />
 					<label>
 						<span>Height</span>
 						<input type="number" min="0" max="50" ng-model="ctrl.selectedShape.height" />
-						<range vaule="ctrl.selectedShape.height"></range>
+						<input type="range" min="0" max="50" ng-model="ctrl.selectedShape.height" />
 					</label>
 					<hr/>
 					<label>
 						<span>Rounding</span>
 						<input type="number" min="0" max="50" ng-model="ctrl.selectedShape.rounding" />
-						<range vaule="ctrl.selectedShape.rounding"></range>
+						<input type="range" min="0" max="50" ng-model="ctrl.selectedShape.rounding" />
 					</label>
 				</div>
 				<div ng-class="{active:ctrl.amTabSel=='style' }" class="style">
+
 					<label>
-						<span>X</span>
-						<input type="number" min="0" max="50" ng-model="ctrl.selectedShape.x" />
-						<range vaule="ctrl.selectedShape.x"></range>
+						<span>Stroke colour</span>
+						<input type="color" ng-model="ctrl.selectedShape.color"/>
 					</label>
+					<br/>
+					<label>
+						<span>Stroke colour</span>
+						<input type="color" ng-model="ctrl.selectedShape.strokeColor"/>
+					</label>
+					<br/>
+					<label>
+						<span>Stroke width</span>
+						<input type="number" min="0" max="50" ng-model="ctrl.selectedShape.strokeWidth" />
+						<input type="range" min="0" max="50" ng-model="ctrl.selectedShape.strokeWidth" />
+					</label>
+
 				</div>
 			</div>
 		</div>
