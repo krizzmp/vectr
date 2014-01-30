@@ -1,0 +1,8 @@
+
+<style>
+	input[type=range] {
+	background: linear-gradient( to right, #fff {{ctrl.number/ctrl.max*100}}%, #eee {{ctrl.number/ctrl.max*100 +0.01}}%);
+	}
+</style>
+
+	<label><span>{{ctrl.name}}:</span> <input type="number" min="0" max="500" ng-model="ctrl.number" /> <input type="range" min="{{ctrl.min}}" max="{{ctrl.max}}" ng-model="ctrl.number" /></label>

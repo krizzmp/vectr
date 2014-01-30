@@ -18,7 +18,7 @@
 			<svg height="300">
 					<rect ng-repeat="shape in ctrl.shapes" ng-click="ctrl.selectShape(shape)"
 					      width="{{shape.width}}" height="{{shape.height}}"
-					      x="{{shape.x}}" y="{{shape.y}}"
+					      x="{{shape.x+0.5}}" y="{{shape.y+0.5}}"
 					      rx="{{shape.rounding}}"
 					      transform="rotate({{shape.rotation}} {{shape.x + shape.width/2}} {{shape.y + shape.height/2}})"
 					      style="fill: {{shape.color}}; stroke: {{shape.strokeColor}}; stroke-width: {{shape.strokeWidth}}"></rect>
@@ -43,41 +43,13 @@
 					<span ng-class="{active:ctrl.amTabSel=='style' }" ng-click="ctrl.amTabSel='style'">Style </span>
 				</div>
 				<div ng-class="{active:ctrl.amTabSel=='shape' }" class="shape">
-					<label>
-						<span>X</span>
-						<input type="number" min="0" max="50" ng-model="ctrl.selectedShape.x" />
-						<input type="range" min="0" max="50" ng-model="ctrl.selectedShape.x" />
-					</label>
+					<range name="X" number="ctrl.selectedShape.x"></range>
+					<range name="Y" number="ctrl.selectedShape.y"></range>
 					<br />
-					<label>
-						<span>Y</span>
-						<input type="number" min="0" max="50" ng-model="ctrl.selectedShape.y" />
-						<input type="range" min="0" max="50" ng-model="ctrl.selectedShape.y" />
-					</label>
+					<range name="Width" number="ctrl.selectedShape.width"></range>
+					<range name="Height" number="ctrl.selectedShape.height"></range>
 					<br/>
-					<label>
-						<span>Rotation</span>
-						<input type="number" min="0" max="360" ng-model="ctrl.selectedShape.rotation" />
-						<input type="range" min="0" max="360" ng-model="ctrl.selectedShape.rotation" />
-					</label>
-					<hr>
-					<label>
-						<span>Width</span>
-						<input type="number" min="0" max="50" ng-model="ctrl.selectedShape.width" />
-						<input type="range" min="0" max="50" ng-model="ctrl.selectedShape.width" />
-					</label>
-					<br />
-					<label>
-						<span>Height</span>
-						<input type="number" min="0" max="50" ng-model="ctrl.selectedShape.height" />
-						<input type="range" min="0" max="50" ng-model="ctrl.selectedShape.height" />
-					</label>
-					<hr/>
-					<label>
-						<span>Rounding</span>
-						<input type="number" min="0" max="50" ng-model="ctrl.selectedShape.rounding" />
-						<input type="range" min="0" max="50" ng-model="ctrl.selectedShape.rounding" />
-					</label>
+					<range name="Stroke Width" number="ctrl.selectedShape.rounding"></range>
 				</div>
 				<div ng-class="{active:ctrl.amTabSel=='style' }" class="style">
 

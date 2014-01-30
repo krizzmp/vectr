@@ -1,22 +1,7 @@
 import 'package:angular/angular.dart';
-import 'components/super_range.dart';
+import 'experimental/Main.dart';
 import 'dart:html';
-//import 'package:perf_api/perf_api.dart';
 
-/* Use the NgController annotation to indicate that this class is an
- * Angular Controller. The compiler will instantiate the controller if
- * it finds it in the DOM.
- *
- * The selector field defines the CSS selector that will trigger the
- * controller. It can be any valid CSS selector which does not cross
- * element boundaries.
- *
- * The publishAs field specifies that the controller instance should be
- * assigned to the current scope under the name specified.
- *
- * The controller's public fields are available for data binding from the view.
- * Similarly, the controller's public methods can be invoked from the view.
- */
 @NgController(
     selector: '[app]',
     publishAs: 'ctrl')
@@ -61,9 +46,9 @@ class Shape {
 class MyAppModule extends Module {
   MyAppModule() {
     type(AppController);
-    type(RatingComponent);
     type(InputDateDirective);
     type(InputRangeDirective);
+    type(RangeComponent);
     //type(Profiler, implementedBy: Profiler); // comment out to enable profiling
   }
 }
