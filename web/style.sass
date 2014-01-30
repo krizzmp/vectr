@@ -1,10 +1,12 @@
-$canvasBg: #F5F5F5
-$sidebarBg: #FAFAFA
+$canvasBg: #Fff
+$sidebarBg: #F5F5F5
+$border: #CCCCCC
 
 html
   height: 100%
 body
   margin: 0
+  font-size: 12px
 *[app]
   margin: 0
   height: 100vh
@@ -12,8 +14,8 @@ body
   flex-direction: column
 .toolbar
   height: 48px
-  background: #D6D6D6
-  border-bottom: 1px solid #9e9e9e
+  background: $sidebarBg
+  border-bottom: 1px solid $border
 
 
 .content
@@ -24,18 +26,22 @@ body
     flex: 1
     background: $canvasBg
   .sidebar
-    border-left: 2px solid #D6D6D6
+    color: #999999
+    border-left: 1px solid $border
     font-family: sans-serif
-    font-weight: bold
+    //font-weight: bold
     width: 300px
     background: $sidebarBg
     display: flex
     flex-direction: column
+    //padding: 1px
     .am
+      margin: 1px
+      margin-bottom: 0px
       //padding-top: 20px
       flex: 1
-      width: 100%
-      border-top: 4px double #D6D6D6
+      //width: 100%
+      border: 1px solid $border
       //margin-top: 3px
       color: #999999
       overflow-y: auto
@@ -47,6 +53,9 @@ body
           display: inline-block
     .om
       height: 200px
+      border: 1px solid $border
+      margin: 1px
+      margin-bottom: 0px
       ul
         list-style: none
         padding: 0
@@ -55,7 +64,6 @@ body
           padding-left: 25px
           height: 24px
           line-height: 24px
-          color: #999999
           &:nth-child(odd)
             background: $sidebarBg
           &.selected
@@ -64,23 +72,16 @@ body
 i
   width: 32px
   height: 32px
-  background: #666666
+  background: $border
   display: inline-block
   border-radius: 4px
   margin: 8px
   margin-right: 0px
 
-.header
-  text-align: center
-  padding-left: 5px
-  height: 24px
-  color: #686868
-  line-height: 24px
-  background: $sidebarBg
 
 hr
   border: none
-  border-top: 1px solid #D6D6D6
+  border-top: 1px solid $border
 
 .shape
   display: none
@@ -93,17 +94,23 @@ hr
     display: block
 
 .tabSelector
-  text-align: center
-  height: 32px
+  height: 24px
+  display: flex
   span
-    background: #ddd
+    background: #eee
     width: 100px
     display: inline-block
-    margin: -2px
-    padding: 5px
+    //margin: -2px
+    //padding: 5px
+    height: 16px
+    line-height: 16px
+    text-align: center
+    border-right: 1px solid $border
+    //border-left: 1px solid #cccccc
+    border-bottom: 1px solid $border
     &.active
-      background: #ccc
-    &:first-of-type
-      border-radius: 4px 0 0 4px
+      background: #F5F5F5
+      border-bottom: 0px solid $border
     &:last-of-type
-      border-radius: 0 4px 4px 0
+      flex: 1
+      border-right: 0px solid $border

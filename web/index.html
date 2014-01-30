@@ -26,8 +26,10 @@
 		</div>
 		<div class="sidebar">
 			<div class="om">
-				<div class="header">
-					Object manager
+				<div class="tabSelector">
+					<span class="active" >Objects </span>
+
+					<span></span>
 				</div>
 				<ul>
 					<li ng-repeat="shape in ctrl.shapes" ng-class="{selected: shape==ctrl.selectedShape}"
@@ -35,12 +37,10 @@
 				</ul>
 			</div>
 			<div class="am">
-				<div class="header">
-					Attribute manager
-				</div>
 				<div class="tabSelector">
 					<span ng-class="{active:ctrl.amTabSel=='shape' }" ng-click="ctrl.amTabSel='shape'">Shape </span>
 					<span ng-class="{active:ctrl.amTabSel=='style' }" ng-click="ctrl.amTabSel='style'">Style </span>
+					<span></span>
 				</div>
 				<div ng-class="{active:ctrl.amTabSel=='shape' }" class="shape">
 					<range name="X" number="ctrl.selectedShape.x"></range>
