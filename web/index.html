@@ -15,8 +15,9 @@
 	<div class="content">
 		<div class="canvas">
 
-			<svg height="300" ng-mousemove="ctrl.drag($event)" ng-mouseup="ctrl.dragEnd()" ng-click="ctrl.panStart($event)">
-				<g transform="translate(50,50)" >
+			<svg height="300" ng-mousemove="ctrl.drag($event)" ng-mouseup="ctrl.dragEnd()" ng-mousedown="ctrl.panStart($event)"
+					 ng-mousewheel="ctrl.zoom($event)">
+				<g transform="translate({{ctrl.panX}},{{ctrl.panY}}), scale({{ctrl.scale}})" >
 					<defs><marker id="myMarker" viewBox="0 0 10 10" refX="1" refY="5"
 					              markerUnits="strokeWidth" orient="auto"
 					              markerWidth="4" markerHeight="3">
