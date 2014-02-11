@@ -16,6 +16,9 @@ body {
   background: whitesmoke;
   border-bottom: 1px solid #cccccc; }
 
+line:hover {
+  stroke: orange; }
+
 .content {
   flex: 1;
   display: flex; }

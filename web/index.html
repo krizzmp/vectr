@@ -15,13 +15,37 @@
 	<div class="content">
 		<div class="canvas">
 
-			<svg height="300">
+			<svg height="300" ng-mousemove="ctrl.drag($event)" ng-mouseup="ctrl.dragEnd()" ng-click="ctrl.panStart($event)">
+				<g transform="translate(50,50)" >
+					<defs><marker id="myMarker" viewBox="0 0 10 10" refX="1" refY="5"
+					              markerUnits="strokeWidth" orient="auto"
+					              markerWidth="4" markerHeight="3">
+						<polyline points="0,0 10,5 0,10 1,5" />
+					</marker></defs>
+
+
 					<rect ng-repeat="shape in ctrl.shapes" ng-click="ctrl.selectShape(shape)"
-					      width="{{shape.width}}" height="{{shape.height}}"
-					      x="{{shape.x+0.5}}" y="{{shape.y+0.5}}"
-					      rx="{{shape.rounding}}"
-					      transform="rotate({{shape.rotation}} {{shape.x + shape.width/2}} {{shape.y + shape.height/2}})"
-					      style="fill: {{shape.color}}; stroke: {{shape.strokeColor}}; stroke-width: {{shape.strokeWidth}}"></rect>
+						    width="{{shape.width}}" height="{{shape.height}}"
+						    x="{{shape.x+0.5}}" y="{{shape.y+0.5}}"
+						    rx="{{shape.rounding}}"
+						    transform="rotate({{shape.rotation}} {{shape.x + shape.width/2}} {{shape.y + shape.height/2}})"
+						    style="fill: {{shape.color}}; stroke: {{shape.strokeColor}}; stroke-width: {{shape.strokeWidth}}"></rect>
+					<line x1="{{ctrl.selectedShape.x+ctrl.selectedShape.width/2}}"
+					      y1="{{ctrl.selectedShape.y+ctrl.selectedShape.height/2}}"
+					      x2="{{ctrl.selectedShape.x+ctrl.selectedShape.width/2+40}}"
+					      y2="{{ctrl.selectedShape.y+ctrl.selectedShape.height/2}}"
+					      stroke="black" stroke-width="6" marker-end="url(#myMarker)"
+
+								ng-mousedown="ctrl.dragStartX($event)"
+
+								/>
+					<line x1="{{ctrl.selectedShape.x+ctrl.selectedShape.width/2}}"
+					      y1="{{ctrl.selectedShape.y+ctrl.selectedShape.height/2}}"
+					      x2="{{ctrl.selectedShape.x+ctrl.selectedShape.width/2}}"
+					      y2="{{ctrl.selectedShape.y+ctrl.selectedShape.height/2-40}}"
+					      stroke="black" stroke-width="6" marker-end="url(#myMarker)"
+					      ng-mousedown="ctrl.dragStartY($event)"/>
+				</g>
 			</svg>
 		</div>
 		<div class="sidebar">
@@ -63,11 +87,7 @@
 						<input type="color" ng-model="ctrl.selectedShape.strokeColor"/>
 					</label>
 					<br/>
-					<label>
-						<span>Stroke width</span>
-						<input type="number" min="0" max="50" ng-model="ctrl.selectedShape.strokeWidth" />
-						<input type="range" min="0" max="50" ng-model="ctrl.selectedShape.strokeWidth" />
-					</label>
+						<range name="Stroke width" number="ctrl.selectedShape.strokeWidth"></range>
 
 				</div>
 			</div>

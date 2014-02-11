@@ -22,16 +22,50 @@ class AppController {
     selectedShape = shape;
   }
   void newShape(){
-    var shape = new Shape("new Rectangle",20,20,20,20);
+    var shape = new Shape("new Rectangle",20,20,100,100);
     shapes.add(shape);
     selectedShape = shape;
   }
 
   List<Shape> _loadData() {
     return [
-        new Shape("Rectangle 1", 10, 10, 10, 10),
-        new Shape("Rectangle 2", 40, 10, 20, 10),
+        new Shape("Rectangle 1", 10, 10, 100, 100),
+        new Shape("Rectangle 2", 80, 80, 100, 100),
     ];
+  }
+  var prevNrX, prevX;
+  var prevNrY, prevY;
+  bool startedX=false, startedY=false;
+  void drag(MouseEvent e){
+    //print("hi");
+    if(startedX){
+      selectedShape.x = prevNrX - (prevX - e.clientX);
+    }
+    if(startedY){
+      selectedShape.y = prevNrY - (prevY - e.clientY);
+    }
+  }
+  void dragStartX(MouseEvent e){
+    //print("hi");
+    startedX=true;
+    prevNrX = selectedShape.x;
+    prevX = e.clientX;
+    //e.preventDefault();
+  }
+  void dragStartY(MouseEvent e){
+    //print("hi");
+    startedY=true;
+    prevNrY = selectedShape.y;
+    prevY = e.clientY;
+    //e.preventDefault();
+  }
+  void dragEnd(){
+    startedX = false;
+    startedY = false;
+  }
+  void panStart(MouseEvent e){
+    print("hi");
+
   }
 }
 

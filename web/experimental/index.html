@@ -5,4 +5,9 @@
 	}
 </style>
 
-	<label><span>{{ctrl.name}}:</span> <input type="number" min="0" max="500" ng-model="ctrl.number" /> <input type="range" min="{{ctrl.min}}" max="{{ctrl.max}}" ng-model="ctrl.number" /></label>
+<label>
+	<span >{{ctrl.name}}:</span>
+	<input type="number" min="0" max="500" ng-model="ctrl.number"  />
+	<span draggable="true" ng-dragstart="ctrl.dragStart($event)" ng-drag="ctrl.drag($event)" class="spinner"></span>
+	<input type="range" min="{{ctrl.min}}" max="{{ctrl.max}}" ng-model="ctrl.number" />
+</label>
